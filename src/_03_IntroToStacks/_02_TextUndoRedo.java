@@ -1,7 +1,9 @@
 package _03_IntroToStacks;
 
+import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Stack;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,14 +25,33 @@ public class _02_TextUndoRedo implements KeyListener{
 	JFrame frame=new JFrame();
 	JPanel panel=new JPanel();
 	JLabel label=new JLabel();
+	Stack<String> c=new Stack<String>();
 	
 	
+	void run() {
+		frame.setVisible(true);
+		panel.add(label);
+		frame.add(panel);
+
+		frame.setSize(800, 800);
+		frame.addKeyListener(this);
 	
-	
+		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+		
+	}
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println(e.getExtendedKeyCode());
+	if (e.getKeyChar()==8) {
+		c.pop();
+		label.setText(c+"");
+	}
+	else {
+		c.push(e.getKeyChar()+"");
+	label.setText(c+"");
+	}	
+		
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {
