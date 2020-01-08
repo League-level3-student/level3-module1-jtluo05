@@ -51,24 +51,41 @@ public class _02_TextUndoRedo implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-	// TODO Auto-generated method stub	
-		c.push(print);	
-		if (!c.isEmpty()) {
+		// TODO Auto-generated method stub
 
-			if (e.getKeyCode() == 8) {
-				deleted.push(c.pop());
-				System.out.println("delete");
-			}
-		}
+		
+		
 		System.out.println(e.getExtendedKeyCode());
-		print = e.getKeyChar() + "";
-		print = ev + print;
-		label.setText(print);
-	
 
-		ev = print;
+		if (!(e.getKeyCode() == 8)&& !(e.getKeyCode()==112)) {
+
+			c.push(e.getKeyChar() + "");
+			
+
+		}
+
+	 if (!c.isEmpty()) {
+
+		 if (e.getKeyCode() == 8) {
+				deleted.push(c.pop());
+
+			
+
+			}
+ else if(e.getKeyCode() == 112) {
+	 if (!deleted.isEmpty()) {
+		 c.push(deleted.pop());
+			 System.out.println("undo");
 	}
+			
+		 }
+		}	
+	String words = c + "";
 
+	label.setText(words);
+	
+	
+	}
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
