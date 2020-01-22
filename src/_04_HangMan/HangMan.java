@@ -50,23 +50,22 @@ public class HangMan implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
-		System.out.println(lettercount);
-		System.out.println(p);
+		
 
 		for (int i = 0; i < lettercount; i++) {
 			
 			if (e.getKeyChar() == p.charAt(i)) {
 				if (i == 0) {
 
-					underscore = p.charAt(i) + underscore.substring(i);
+					underscore = p.charAt(i) + underscore.substring(i+1);
 
 					
 				}
-				if (i == lettercount - 1) {
+				else if (i == lettercount - 1) {
 					underscore = underscore.substring(0, lettercount - 1) + p.charAt(i);
 				} 
-				if(i>0&&i<lettercount-1){
-					underscore=underscore.substring(0, i)+p.charAt(i)+ underscore.substring(i);
+				else {
+					underscore=underscore.substring(0, i)+p.charAt(i)+ underscore.substring(i+1);
 				}
 			}
 			label.setText(underscore);
