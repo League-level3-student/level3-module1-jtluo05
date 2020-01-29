@@ -19,7 +19,8 @@ public class StringIntegerPair {
 		// A. iterate through the keys. If you find a key that matches
 		// the passed in String, set the value at that location to the
 		// passed in value and return from the method.
-		for (int i = 0; i < key.length(); i++) {
+
+		for (int i = 0; i < keys.length; i++) {
 			if (key.equals(keys[i])) {
 				values[i] = value;
 				return;
